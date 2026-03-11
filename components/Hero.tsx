@@ -22,9 +22,30 @@ const pockets = [
 	}
 ]
 
+function getPeopleWord(count: number) {
+	const absCount = Math.abs(count) % 100
+	const lastDigit = absCount % 10
+
+	if (absCount >= 11 && absCount <= 14) {
+		return 'человек'
+	}
+
+	if (lastDigit === 1) {
+		return 'человек'
+	}
+
+	if (lastDigit >= 2 && lastDigit <= 4) {
+		return 'человека'
+	}
+
+	return 'человек'
+}
+
 export default function Hero() {
 	const [activePocketIndex, setActivePocketIndex] = useState(1)
 	const { subscribersCount } = useSignupSync()
+	const safeCount = subscribersCount ?? 0
+	const peopleWord = getPeopleWord(safeCount)
 
 	return (
 		<section className='min-h-screen grid grid-cols-1 lg:grid-cols-2 relative overflow-hidden'>
@@ -75,7 +96,7 @@ export default function Hero() {
 						animation: 'fadeUp 0.8s ease 1s both'
 					}}
 				>
-					{`Уже ${subscribersCount ?? 0} человек в очереди · Бесплатный ранний доступ`}
+					{`Уже ${safeCount} ${peopleWord} в очереди · Бесплатный ранний доступ`}
 				</p>
 			</div>
 
