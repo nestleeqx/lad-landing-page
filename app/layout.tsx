@@ -31,7 +31,9 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Лад — бюджет для двоих',
 		description: 'Деньги вместе — без ссор и таблиц',
-		type: 'website'
+		type: 'website',
+		url: 'https://lad.ru',
+		images: [{ url: '/og.png', width: 1200, height: 630 }]
 	}
 }
 
